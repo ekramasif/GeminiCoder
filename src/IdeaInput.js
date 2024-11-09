@@ -58,12 +58,12 @@ const Footer = () => {
               <h3 className="text-lg font-semibold text-gray-900">Resources</h3>
               <ul className="mt-4 space-y-2">
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-blue-600 text-sm transition-colors">
+                  <a href="https://github.com/ekramasif/GeminiCoder/blob/main/README.md" className="text-gray-600 hover:text-blue-600 text-sm transition-colors">
                     Documentation
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-blue-600 text-sm transition-colors">
+                  <a href="https://aistudio.google.com/app/apikey" className="text-gray-600 hover:text-blue-600 text-sm transition-colors">
                     API Reference
                   </a>
                 </li>
@@ -92,7 +92,15 @@ const Footer = () => {
           {/* Copyright */}
           <div className="mt-8 pt-8 border-t border-gray-100">
             <p className="text-center text-gray-500 text-sm">
-              © {new Date().getFullYear()} GeminiCoder. All rights reserved.
+              © {new Date().getFullYear()} {""}
+              <a 
+                href="https://www.linkedin.com/in/ekram-asif/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-blue-600 hover:underline"
+              >
+                Ekram Asif
+              </a> All rights reserved.
             </p>
           </div>
         </div>
