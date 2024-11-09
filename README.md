@@ -41,7 +41,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 To use the Google Generative AI model, you need to obtain an API key. Follow these steps:
 
 1. **Create a Google Cloud Project**:
-   - Go to the [Google Cloud Console](https://console.cloud.google.com/).
+   - Go to the [ai.google.dev](https://ai.google.dev/gemini-api/docs/api-key).
    - Click on the project drop-down and select or create a new project.
 
 2. **Enable the Google Generative AI API**:
