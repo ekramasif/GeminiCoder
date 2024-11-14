@@ -5,6 +5,8 @@
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.19.9",
     "@codesandbox/sandpack-themes": "^2.0.21",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@google/generative-ai": "^0.21.0",
     "@monaco-editor/react": "^4.6.0",
     "@testing-library/jest-dom": "^5.17.0",

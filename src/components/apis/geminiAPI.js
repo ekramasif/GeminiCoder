@@ -8,7 +8,7 @@ export const generateIdeaContent = async (idea) => {
 
   try {
     // Initialize the model
-    model = await genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    model = await genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Enhanced prompt to act as a software engineer
     const prompt = `You are a seasoned software engineer. Please provide the only HTML and Tailwind CSS code for the following idea: ${idea}. 
