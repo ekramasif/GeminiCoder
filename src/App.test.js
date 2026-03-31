@@ -5,7 +5,7 @@ test('renders the matte generator workspace', () => {
   render(<App />);
   expect(
     screen.getByRole('heading', {
-      name: /describe the product\. get the first build\./i,
+      name: /build the first premium interface before the blank page wins\./i,
     })
   ).toBeInTheDocument();
   expect(

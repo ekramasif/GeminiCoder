@@ -2,33 +2,45 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
 
-export const generateIdeaContent = async (idea) => {
-  // Define the model outside the try block for broader scope
+const buildPrompt = (idea, options = {}) => {
+  const { buildMode, styleMode } = options;
+
+  return `You are a seasoned software engineer and premium product designer.
+
+Generate only HTML and Tailwind CSS for the following idea:
+${idea}
+
+Generation profile:
+- Build mode: ${buildMode?.label || "Web App"}${buildMode?.description ? ` - ${buildMode.description}` : ""}
+- Visual style: ${styleMode?.label || "Premium SaaS"}${styleMode?.description ? ` - ${styleMode.description}` : ""}
+
+Requirements:
+- Return code only. No explanation, no markdown fences, no commentary.
+- The output should feel premium, modern, and production-minded.
+- Use strong hierarchy, thoughtful spacing, and polished sections.
+- Match the selected build mode and visual style closely.
+- Prefer realistic UI sections, cards, navigation, content groupings, and CTAs.
+- Format the code cleanly, similar to Prettier output.
+- If the request is unrelated to building the interface, respond with: "I cannot answer that."`;
+};
+
+export const generateIdeaContent = async (idea, options = {}) => {
   let model;
+  const prompt = buildPrompt(idea, options);
 
   try {
-    // Initialize the model
     model = await genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-
-    // Enhanced prompt to act as a software engineer
-    const prompt = `You are a seasoned software engineer. Please provide the only HTML and Tailwind CSS code for the following idea: ${idea}. 
-
-    **Important Notes:**
-    * Code will be formatted in like prettier
-    * If the question is irrelevant or does not pertain to the provided idea, respond with: "I cannot answer that."
-    * No explanation will be needed, just code.`;
-    
     const result = await model.generateContent(prompt);
     return result.response.text();
   } catch (error) {
     console.error("Error generating content:", error);
 
-    // If RECITATION error occurs, retry with a slightly modified prompt
     if (error.message.includes("RECITATION")) {
       console.warn("Retrying with slight prompt variation...");
+
       try {
         const result = await model.generateContent(
-          `${idea} (Describe its unique features)`
+          `${prompt}\n\nFocus on distinctive layout structure and unique product details.`
         );
         return result.response.text();
       } catch (retryError) {
@@ -36,10 +48,10 @@ export const generateIdeaContent = async (idea) => {
           "The generated content was flagged. Please try rephrasing your idea or adding more details."
         );
       }
-    } else {
-      throw new Error(
-        "An error occurred while generating content. Please try again."
-      );
     }
+
+    throw new Error(
+      "An error occurred while generating content. Please try again."
+    );
   }
 };
