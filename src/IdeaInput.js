@@ -10,18 +10,21 @@ import IdeaForm from "./components/IdeaForm";
 import GeneratedCode from "./components/GeneratedCode";
 import Features from "./components/Features";
 
+const countWords = (value) => {
+  const trimmedValue = value.trim();
+  return trimmedValue ? trimmedValue.split(/\s+/).length : 0;
+};
+
 const IdeaInput = () => {
   const [idea, setIdea] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [htmlContent, setHtmlContent] = useState("");
+  const wordCount = countWords(idea);
 
   const handleSubmit = async () => {
-    const wordCount = idea.trim().split(/\s+/).length;
     if (wordCount < 15) {
-      setError(
-        "Please provide a more detailed description of your idea (at least 15 words)."
-      );
+      setError("Add a bit more detail. Use at least 15 words.");
       return;
     }
 
@@ -31,7 +34,6 @@ const IdeaInput = () => {
 
     try {
       const markdownCode = await generateIdeaContent(idea);
-      console.log("markdownCode:::::::::::::", markdownCode);
       const html = marked(markdownCode);
       const cleanHtml = DOMPurify.sanitize(html);
       setHtmlContent(cleanHtml);
@@ -44,18 +46,20 @@ const IdeaInput = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24 pb-12 px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-white/70 backdrop-blur-sm border border-gray-100 p-8 rounded-2xl shadow-xl">
+      <main className="flex-1 px-4 pb-14 pt-28 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl fade-in-up">
+          <div className="matte-panel relative overflow-hidden rounded-[2rem] p-6 sm:p-8 lg:p-10">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
             <Header />
-            <IdeaForm 
-              idea={idea} 
-              setIdea={setIdea} 
-              handleSubmit={handleSubmit} 
-              loading={loading} 
-              error={error} 
+            <IdeaForm
+              idea={idea}
+              setIdea={setIdea}
+              handleSubmit={handleSubmit}
+              loading={loading}
+              error={error}
+              wordCount={wordCount}
             />
             {htmlContent && <GeneratedCode htmlContent={htmlContent} />}
           </div>

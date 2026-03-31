@@ -2,26 +2,32 @@ import React from "react";
 
 const GeneratedCode = ({ htmlContent }) => {
   return (
-    <div className="mt-10">
-      <h3 className="text-xl font-semibold text-center mb-4 text-gray-800">
-        Generated HTML Code
-      </h3>
-      <div className="relative rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
-        <div className="absolute top-0 left-0 right-0 h-10 bg-gray-100 border-b border-gray-200 flex items-center px-4">
-          <div className="flex space-x-2">
-            <div className="w-3 h-3 rounded-full bg-red-400"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-            <div className="w-3 h-3 rounded-full bg-green-400"></div>
-          </div>
+    <section className="mt-10 space-y-4 fade-in-up">
+      <div className="flex items-center justify-between gap-3">
+        <h2 className="text-xl font-semibold text-zinc-50">Output</h2>
+        <div className="matte-pill inline-flex items-center rounded-full px-3 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.3em] text-zinc-400">
+          HTML
         </div>
-        <pre className="overflow-auto p-4 pt-12 text-sm">
-          <code
-            className="language-html"
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
-          />
-        </pre>
       </div>
-    </div>
+
+      <div className="matte-code overflow-hidden rounded-[1.75rem]">
+        <div className="flex items-center gap-4 border-b border-white/10 bg-white/[0.03] px-5 py-4">
+          <div className="flex space-x-2">
+            <div className="h-2.5 w-2.5 rounded-full bg-zinc-500"></div>
+            <div className="h-2.5 w-2.5 rounded-full bg-zinc-600"></div>
+            <div className="h-2.5 w-2.5 rounded-full bg-zinc-700"></div>
+          </div>
+          <p className="text-[0.65rem] uppercase tracking-[0.35em] text-zinc-500">
+            response.html
+          </p>
+        </div>
+
+        <div
+          className="generated-markup max-h-[32rem] overflow-auto px-5 py-5 text-sm"
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
+        />
+      </div>
+    </section>
   );
 };
 

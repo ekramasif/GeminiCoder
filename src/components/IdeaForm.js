@@ -1,38 +1,47 @@
 import React from "react";
 import { FaSpinner } from "react-icons/fa";
 
-const IdeaForm = ({ idea, setIdea, handleSubmit, loading, error }) => {
+const IdeaForm = ({
+  idea,
+  setIdea,
+  handleSubmit,
+  loading,
+  error,
+  wordCount,
+}) => {
   return (
     <div className="mt-8">
+      <div className="mb-3 flex items-center justify-between px-1">
+        <p className="text-sm font-medium text-zinc-200">Prompt</p>
+        <span className="text-sm text-zinc-500">{wordCount} words</span>
+      </div>
+
       <textarea
-        className={`w-full p-4 bg-white/50 backdrop-blur-sm border rounded-xl text-gray-700 shadow-sm 
-        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all
-        ${error ? "border-red-300" : "border-gray-200"}`}
-        placeholder="Describe the app you want to build..."
+        className={`matte-field min-h-[180px] w-full rounded-[1.5rem] px-5 py-4 text-base leading-7 text-zinc-100 placeholder:text-zinc-500 transition duration-300 focus:outline-none ${
+          error ? "matte-field-error" : ""
+        }`}
+        placeholder="Describe the product, users, and core workflow..."
         value={idea}
         onChange={(e) => setIdea(e.target.value)}
-        rows="3"
+        rows="6"
         disabled={loading}
       />
-      <div className="flex justify-between text-gray-500 text-sm mt-2 px-1">
-        <span>Minimum 15 words</span>
-        <span>{idea.trim().split(/\s+/).length} words</span>
-      </div>
+
       {error && (
-        <div className="mt-2 text-red-500 text-sm bg-red-50 p-2 rounded-lg">
+        <div className="mt-4 rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200">
           {error}
         </div>
       )}
-      <div className="mt-6 flex justify-center">
+
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="text-sm text-zinc-500">Use at least 15 words.</div>
         <button
           onClick={handleSubmit}
           disabled={loading}
-          className="px-8 py-3 text-white bg-gradient-to-r from-blue-600 to-indigo-600 
-          rounded-xl font-medium flex items-center space-x-2 hover:shadow-lg 
-          transition-all duration-300 disabled:opacity-70"
+          className="matte-button inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] disabled:opacity-70"
         >
-          <span>{loading ? "Generating..." : "Generate App"}</span>
-          {loading && <FaSpinner className="animate-spin ml-2" />}
+          <span>{loading ? "Generating" : "Generate"}</span>
+          {loading && <FaSpinner className="h-4 w-4 animate-spin" />}
         </button>
       </div>
     </div>
