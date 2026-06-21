@@ -1,4 +1,3 @@
-// src/IdeaInput.js
 import React, { useState } from "react";
 import { generateIdeaContent } from "./components/apis/geminiAPI";
 import DOMPurify from "dompurify";
@@ -35,8 +34,6 @@ const IdeaInput = () => {
     setHtmlContent("");
 
     try {
-        // We removed the active modes from component state, 
-        // so we can hardcode default fallback options here to maintain API expected params
       const markdownCode = await generateIdeaContent(idea, {
         buildMode: { id: "web-app" },
         styleMode: { id: "minimal-mono" },
