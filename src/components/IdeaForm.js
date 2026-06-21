@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Paperclip, Globe, ChevronDown, MonitorPlay, Sparkles, ArrowUp } from "lucide-react";
+import { Paperclip, Globe, MonitorPlay, Sparkles, ArrowUp } from "lucide-react";
 import { FaSpinner } from "react-icons/fa";
 
 const IdeaForm = ({

@@ -14,9 +14,12 @@ const Navbar = () => {
                 className="h-7 w-auto object-contain brightness-110 contrast-110"
               />
             </div>
-            <p className="truncate text-sm font-semibold uppercase tracking-[0.3em] text-zinc-200">
-              GeminiCoder
-            </p>
+            <div>
+              <p className="truncate text-sm font-semibold uppercase tracking-[0.3em] text-zinc-200">
+                GeminiCoder
+              </p>
+              <p className="text-xs text-zinc-500">Minimal AI app builder</p>
+            </div>
           </div>
 
           <a

@@ -2,15 +2,18 @@ import React from "react";
 
 const GeneratedCode = ({ htmlContent }) => {
   return (
-    <section className="mt-10 space-y-4 fade-in-up">
+    <section className="fade-in-up space-y-4">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-xl font-semibold text-zinc-50">Output</h2>
+        <div>
+          <h2 className="text-xl font-semibold text-zinc-50">Generated Output</h2>
+          <p className="mt-1 text-sm text-zinc-500">Review the rendered response and keep iterating until the composition feels right.</p>
+        </div>
         <div className="matte-pill inline-flex items-center rounded-full px-3 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.3em] text-zinc-400">
           HTML
         </div>
       </div>
 
-      <div className="matte-code overflow-hidden rounded-[1.75rem]">
+      <div className="matte-code overflow-hidden rounded-[1.75rem] border border-white/8">
         <div className="flex items-center gap-4 border-b border-white/10 bg-white/[0.03] px-5 py-4">
           <div className="flex space-x-2">
             <div className="h-2.5 w-2.5 rounded-full bg-zinc-500"></div>

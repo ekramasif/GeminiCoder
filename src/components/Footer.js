@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="px-4 pb-10 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-6xl flex-col gap-5 rounded-[1.75rem] border border-white/8 bg-black/25 px-6 py-6 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-5 rounded-[1.75rem] border border-white/8 bg-white/[0.03] px-6 py-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05]">
             <img
@@ -18,7 +18,7 @@ const Footer = () => {
               GeminiCoder
             </p>
             <p className="text-sm text-zinc-500">
-              &copy; {new Date().getFullYear()}
+              Premium UI generation workspace, {new Date().getFullYear()}
             </p>
           </div>
         </div>
