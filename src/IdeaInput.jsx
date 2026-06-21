@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { generateIdeaContent } from "./components/apis/geminiAPI";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import IdeaForm from "./components/IdeaForm";
 import GeneratedCode from "./components/GeneratedCode";
@@ -50,59 +48,27 @@ const IdeaInput = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-black text-zinc-300 font-sans selection:bg-zinc-800 selection:text-white">
-      <Navbar />
-      <main className="flex-1 px-4 pb-20 pt-32 sm:px-6 lg:px-8">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 fade-in-up">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/8 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_34%),linear-gradient(180deg,#131316_0%,#09090b_100%)] p-6 shadow-[0_30px_120px_rgba(0,0,0,0.55)] sm:p-10 lg:p-14">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-            <div className="pointer-events-none absolute right-[-8rem] top-[-10rem] h-72 w-72 rounded-full bg-white/5 blur-3xl" />
-            <div className="pointer-events-none absolute left-[-6rem] bottom-[-10rem] h-72 w-72 rounded-full bg-white/5 blur-3xl" />
+    <div className="min-h-screen bg-[#0c0c10] text-zinc-300 selection:bg-zinc-800 selection:text-white">
+      <main className="relative overflow-hidden px-4 pb-20 pt-20 sm:px-6 sm:pt-24 lg:px-8">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(27,89,153,0.5),rgba(12,15,21,0.96)_40%,rgba(11,11,15,1)_72%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-[-14rem] h-[28rem] rounded-[50%] border-t-[24px] border-white opacity-95 sm:bottom-[-15rem] sm:h-[32rem] sm:border-t-[28px]" />
+        <div className="pointer-events-none absolute inset-x-[-2%] bottom-[-13.5rem] h-[28rem] rounded-[50%] border-t-[10px] border-[#52a8ff] opacity-95 blur-[1px] sm:bottom-[-14.5rem] sm:h-[32rem]" />
+        <div className="pointer-events-none absolute inset-x-[-4%] bottom-[-13rem] h-[28rem] rounded-[50%] border-t-[18px] border-[#1e7ae6]/80 opacity-80 blur-md sm:bottom-[-14rem] sm:h-[32rem]" />
+        <div className="pointer-events-none absolute inset-x-[14%] bottom-[10rem] h-40 rounded-full bg-[#2684ff]/35 blur-[70px] sm:bottom-[12rem] sm:h-44" />
 
-            <div className="relative z-10 grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_20rem] lg:items-start">
-              <div>
-                <Header />
-                <IdeaForm
-                  idea={idea}
-                  setIdea={handleIdeaChange}
-                  handleSubmit={handleSubmit}
-                  loading={loading}
-                  error={error}
-                />
-              </div>
-
-              <aside className="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5 backdrop-blur-sm">
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-zinc-500">
-                  Workflow
-                </p>
-                <div className="mt-5 space-y-5">
-                  <div>
-                    <p className="text-sm font-medium text-zinc-100">1. Describe the product</p>
-                    <p className="mt-1 text-sm leading-6 text-zinc-400">
-                      Add the screens, audience, tone, and features you want in the generated interface.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-zinc-100">2. Generate production-minded markup</p>
-                    <p className="mt-1 text-sm leading-6 text-zinc-400">
-                      Gemini returns structured HTML and Tailwind CSS aimed at polished app and marketing layouts.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-zinc-100">3. Refine and ship faster</p>
-                    <p className="mt-1 text-sm leading-6 text-zinc-400">
-                      Iterate on the prompt until the hierarchy, spacing, and UI details match the product direction.
-                    </p>
-                  </div>
-                </div>
-              </aside>
-            </div>
-          </div>
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-6xl flex-col items-center justify-center fade-in-up">
+          <Header />
+          <IdeaForm
+            idea={idea}
+            setIdea={handleIdeaChange}
+            handleSubmit={handleSubmit}
+            loading={loading}
+            error={error}
+          />
 
           {htmlContent && <GeneratedCode htmlContent={htmlContent} />}
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

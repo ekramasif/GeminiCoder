@@ -2,7 +2,7 @@ import React from "react";
 
 const GeneratedCode = ({ htmlContent }) => {
   return (
-    <section className="fade-in-up space-y-4">
+    <section className="mt-20 w-full max-w-6xl space-y-4 fade-in-up">
       <div className="flex items-center justify-between gap-3">
         <div>
           <h2 className="text-xl font-semibold text-zinc-50">Generated Output</h2>

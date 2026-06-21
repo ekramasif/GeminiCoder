@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Paperclip, Globe, MonitorPlay, Sparkles, ArrowUp } from "lucide-react";
+import { Plus, ChevronDown, Lightbulb, ArrowRight } from "lucide-react";
 import { FaSpinner } from "react-icons/fa";
 
 const IdeaForm = ({
@@ -28,26 +28,16 @@ const IdeaForm = ({
   };
 
   return (
-    <div className="mt-10 w-full max-w-4xl transition-all duration-300 ease-in-out">
+    <div className="mt-12 w-full max-w-[52rem] transition-all duration-300 ease-in-out">
       <div
-        className={`relative flex w-full flex-col rounded-[1.75rem] border bg-[#0f1013]/95 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition-all duration-300 sm:p-5 ${
-          error ? "border-red-500/50 shadow-[0_0_15px_rgba(239,68,68,0.15)]" : "border-white/10 hover:border-white/20"
+        className={`relative flex w-full flex-col rounded-[2rem] border border-[#3a3a43] bg-[#2d2d32]/96 p-3 shadow-[0_16px_50px_rgba(0,0,0,0.55)] transition-all duration-300 sm:p-4 ${
+          error ? "shadow-[0_0_15px_rgba(239,68,68,0.18)]" : "hover:border-[#4a4a55]"
         }`}
       >
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <div>
-            <p className="text-sm font-medium text-zinc-100">Prompt</p>
-            <p className="mt-1 text-sm text-zinc-500">Focus on layout, sections, tone, and key interactions.</p>
-          </div>
-          <div className="matte-pill rounded-full px-3 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.3em] text-zinc-400">
-            HTML + Tailwind
-          </div>
-        </div>
-
         <textarea
           ref={textareaRef}
-          className="custom-scrollbar min-h-[160px] max-h-[300px] w-full resize-none bg-transparent text-lg leading-relaxed text-zinc-100 outline-none placeholder:text-zinc-500 sm:text-lg"
-          placeholder="Describe the product you want: pages, sections, user type, content blocks, visual direction, and any premium details you want emphasized."
+          className="custom-scrollbar min-h-[132px] w-full resize-none rounded-[1.4rem] border border-[#45454d] bg-transparent px-5 pt-8 text-xl font-medium leading-relaxed text-zinc-100 outline-none placeholder:text-zinc-500 sm:min-h-[138px] sm:text-[1.05rem]"
+          placeholder="Let's build an admin panel to manage..."
           value={idea}
           onChange={(e) => setIdea(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -55,59 +45,51 @@ const IdeaForm = ({
           autoFocus
         />
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-4 gap-4">
-          <div className="scrollbar-hide flex items-center gap-2 overflow-x-auto pb-2 sm:gap-4 sm:pb-0">
+        <div className="mt-4 flex flex-col gap-3 px-2 pb-1 sm:flex-row sm:items-center sm:justify-between">
+          <div className="scrollbar-hide flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0">
             <button
               type="button"
-              className="text-zinc-500 hover:text-zinc-300 p-2 rounded-full transition-colors flex-shrink-0"
+              className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-[#494951] text-zinc-300 transition-colors hover:border-[#5d5d68] hover:text-white"
               title="Attach files (coming soon)"
             >
-              <Paperclip className="w-5 h-5" />
-            </button>
-            <div className="w-px h-5 bg-white/10 flex-shrink-0" />
-            <button
-              type="button"
-              className="flex flex-shrink-0 items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium text-zinc-400 transition-colors hover:bg-white/5 hover:text-zinc-200"
-            >
-              <Globe className="w-4 h-4" />
-              Public
+              <Plus className="h-6 w-6" />
             </button>
             <button
               type="button"
-              className="flex flex-shrink-0 items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium text-zinc-400 transition-colors hover:bg-white/5 hover:text-zinc-200"
+              className="flex flex-shrink-0 items-center gap-2 rounded-full px-3 py-2 text-[1.05rem] font-medium text-zinc-300 transition-colors hover:text-white"
             >
-              <MonitorPlay className="w-4 h-4" />
-              Auto layout
+              Standard
+              <ChevronDown className="h-4 w-4 text-zinc-500" />
+            </button>
+            <button
+              type="button"
+              className="flex flex-shrink-0 items-center gap-2 rounded-full px-3 py-2 text-[1.05rem] font-medium text-zinc-400 transition-colors hover:text-zinc-200"
+            >
+              <Lightbulb className="h-4 w-4" />
+              Plan
             </button>
           </div>
 
-          <div className="flex items-center justify-end gap-3 flex-shrink-0">
-            <button
-              type="button"
-              className="text-zinc-500 hover:text-zinc-300 hover:bg-white/5 p-2 rounded-full transition-colors"
-              aria-label="Enhance prompt"
-            >
-              <Sparkles className="w-5 h-5" />
-            </button>
+          <div className="flex flex-shrink-0 items-center justify-end">
             <button
               onClick={handleSubmit}
               disabled={loading || !idea.trim()}
               aria-label={loading ? "Generating" : "Generate"}
-              className={`flex h-11 items-center justify-center gap-2 rounded-full px-4 transition-all duration-300 ${
+              className={`flex h-14 items-center justify-center gap-3 rounded-full px-7 text-[1.1rem] font-semibold transition-all duration-300 ${
                 idea.trim() && !loading
-                  ? "bg-zinc-100 text-black hover:scale-[1.02] hover:bg-white"
-                  : "cursor-not-allowed bg-white/10 text-zinc-500"
+                  ? "bg-[#2c7cc6] text-white hover:bg-[#3591e7]"
+                  : "cursor-not-allowed bg-[#2f4255] text-zinc-400"
               }`}
             >
               {loading ? (
                 <>
                   <FaSpinner className="h-4 w-4 animate-spin" />
-                  <span className="text-sm font-medium">Generating</span>
+                  <span>Building...</span>
                 </>
               ) : (
                 <>
-                  <span className="text-sm font-medium">Generate</span>
-                  <ArrowUp className="h-4 w-4" />
+                  <span>Build now</span>
+                  <ArrowRight className="h-5 w-5" />
                 </>
               )}
             </button>
@@ -116,10 +98,10 @@ const IdeaForm = ({
       </div>
       
       {error && (
-          <div className="mt-4 flex items-center gap-2 px-4 text-sm text-red-400">
-            <span>{error}</span>
-          </div>
-        )}
+        <div className="mt-4 px-4 text-sm text-red-400">
+          <span>{error}</span>
+        </div>
+      )}
     </div>
   );
 };

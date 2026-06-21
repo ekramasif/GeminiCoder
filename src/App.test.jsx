@@ -5,7 +5,7 @@ test('renders the main generator workspace', () => {
   render(<App />);
   expect(
     screen.getByRole('heading', {
-      name: /build a modern product surface from one precise prompt\./i,
+      name: /ready to build something amazing\?/i,
     })
   ).toBeInTheDocument();
   expect(
